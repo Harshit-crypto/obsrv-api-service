@@ -15,7 +15,7 @@ This README will guide you through the setup and configuration process. Follow t
 
 ## Prerequisites
 
- **Add a New User**: Create a postfres user as per the specification mentioned in the [documentation](https://github.com/Sunbird-Obsrv/obsrv-api-service).
+ **Add a New User**: Create a postgres user as per the specification mentioned in the [documentation](https://github.com/Sunbird-Obsrv/obsrv-api-service).
 
 
 ## Configuration
