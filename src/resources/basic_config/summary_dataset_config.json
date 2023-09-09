@@ -1,0 +1,203 @@
+
+{
+    "dataset_id": "summary-raw",
+    "name": "summary-raw",
+    "type": "dataset",
+    "router_config": {
+      "topic": "summary-raw"
+    },
+      "denorm_config": {
+      "redis_db_host": "localhost",
+      "redis_db_port": 6379
+    },
+    "dataset_config": {
+      "entry_topic": "obsrv.summary.input",
+      "data_key": "id",
+      "kafka_host": "localhost",
+      "kafka_port": 9092
+    },
+    "extraction_config": {
+      "is_batch_event": true,
+      "extraction_key": "events"
+    },
+    "tags": [],
+  "data_schema":{
+      "type": "object",
+      "properties": {
+        "eid": { "type": "string" },
+        "ver": { "type": "string" },
+        "syncts": { "type": "integer" },
+        "ets": { "type": "integer" },
+        "flags": {
+          "type": "object",
+          "properties": {
+            "summary_denorm_duplicate": { "type": "boolean" }
+          },
+          "required": ["summary_denorm_duplicate"]
+        },
+        "mid": { "type": "string" },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "uid": { "type": "string" },
+        "edata": {
+          "type": "object",
+          "properties": {
+            "eks": {
+              "type": "object",
+              "properties": {
+                "interact_events_per_min": { "type": "number" },
+                "start_time": { "type": "integer" },
+                "interact_events_count": { "type": "integer" },
+                "item_responses": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                },
+                "end_time": { "type": "integer" },
+                "events_summary": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": { "type": "string" },
+                      "count": { "type": "integer" }
+                    },
+                    "required": ["id", "count"]
+                  }
+                },
+                "page_summary": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": { "type": "string" },
+                      "type": { "type": "string" },
+                      "env": { "type": "string" },
+                      "time_spent": { "type": "number" },
+                      "visit_count": { "type": "integer" }
+                    },
+                    "required": ["id", "type", "env", "time_spent", "visit_count"]
+                  }
+                },
+                "time_diff": { "type": "number" },
+                "telemetry_version": { "type": "string" },
+                "env_summary": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "env": { "type": "string" },
+                      "time_spent": { "type": "number" },
+                      "count": { "type": "integer" }
+                    },
+                    "required": ["env", "time_spent", "count"]
+                  }
+                },
+                "time_spent": { "type": "number" }
+              },
+              "required": [
+                "interact_events_per_min",
+                "start_time",
+                "interact_events_count",
+                "end_time",
+                "events_summary",
+                "page_summary",
+                "time_diff",
+                "telemetry_version",
+                "env_summary",
+                "time_spent"
+              ]
+            }
+          },
+          "required": ["eks"]
+        },
+        "context": {
+          "type": "object",
+          "properties": {
+            "pdata": {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "ver": { "type": "string" },
+                "model": { "type": "string" }
+              },
+              "required": ["id", "ver", "model"]
+            },
+            "granularity": { "type": "string" },
+            "date_range": {
+              "type": "object",
+              "properties": {
+                "from": { "type": "integer" },
+                "to": { "type": "integer" }
+              },
+              "required": ["from", "to"]
+            },
+            "rollup": {
+              "type": "object",
+              "properties": { "l1": { "type": "string" } },
+              "required": ["l1"]
+            },
+            "cdata": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": { "type": "string" },
+                  "type": { "type": "string" }
+                },
+                "required": ["id", "type"]
+              }
+            }
+          },
+          "required": ["pdata", "granularity", "date_range", "rollup", "cdata"]
+        },
+        "dimensions": {
+          "type": "object",
+          "properties": {
+            "did": { "type": "string" },
+            "pdata": {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "ver": { "type": "string" },
+                "pid": { "type": "string" }
+              },
+              "required": ["id", "ver", "pid"]
+            },
+            "sid": { "type": "string" },
+            "channel": { "type": "string" },
+            "type": { "type": "string" },
+            "mode": { "type": "string" }
+          },
+          "required": ["did", "pdata", "sid", "channel", "type", "mode"]
+        },
+        "object": {
+          "type": "object",
+          "properties": {
+            "id": { "type": "string" },
+            "type": { "type": "string" },
+            "ver": { "type": "string" },
+            "rollup": { "type": "object" }
+          },
+          "required": ["id", "type", "ver", "rollup"]
+        }
+      },
+      "required": [
+        "eid",
+        "ver",
+        "syncts",
+        "ets",
+        "flags",
+        "mid",
+        "tags",
+        "uid",
+        "edata",
+        "context",
+        "dimensions",
+        "object"
+      ]
+    },
+    "status":"ACTIVE",
+    "published_date":"2023-09-07T13:46:33.413713+05:30"
+  }

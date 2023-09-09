@@ -1,0 +1,249 @@
+{
+  "type": "kafka",
+  "spec": {
+    "ioConfig": {
+      "type": "kafka",
+      "consumerProperties": {
+        "bootstrap.servers": "localhost:9092"
+      },
+      "topic": "obsrv.summary.input",
+      "inputFormat": {
+        "type": "json",
+        "flattenSpec": {
+          "fields": [
+            {
+              "name": "context.cdata",
+              "type": "path",
+              "expr": "$.context.cdata"
+            },
+            {
+              "name": "context.date_range.from",
+              "type": "path",
+              "expr": "$.context.date_range.from"
+            },
+            {
+              "name": "context.date_range.to",
+              "type": "path",
+              "expr": "$.context.date_range.to"
+            },
+            {
+              "name": "context.granularity",
+              "type": "path",
+              "expr": "$.context.granularity"
+            },
+            {
+              "name": "context.pdata.id",
+              "type": "path",
+              "expr": "$.context.pdata.id"
+            },
+            {
+              "name": "context.pdata.model",
+              "type": "path",
+              "expr": "$.context.pdata.model"
+            },
+            {
+              "name": "context.pdata.ver",
+              "type": "path",
+              "expr": "$.context.pdata.ver"
+            },
+            {
+              "name": "context.rollup.l1",
+              "type": "path",
+              "expr": "$.context.rollup.l1"
+            },
+            {
+              "name": "dimensions.channel",
+              "type": "path",
+              "expr": "$.dimensions.channel"
+            },
+            {
+              "name": "dimensions.did",
+              "type": "path",
+              "expr": "$.dimensions.did"
+            },
+            {
+              "name": "dimensions.mode",
+              "type": "path",
+              "expr": "$.dimensions.mode"
+            },
+            {
+              "name": "dimensions.pdata.id",
+              "type": "path",
+              "expr": "$.dimensions.pdata.id"
+            },
+            {
+              "name": "dimensions.pdata.pid",
+              "type": "path",
+              "expr": "$.dimensions.pdata.pid"
+            },
+            {
+              "name": "dimensions.pdata.ver",
+              "type": "path",
+              "expr": "$.dimensions.pdata.ver"
+            },
+            {
+              "name": "dimensions.sid",
+              "type": "path",
+              "expr": "$.dimensions.sid"
+            },
+            {
+              "name": "dimensions.type",
+              "type": "path",
+              "expr": "$.dimensions.type"
+            },
+            {
+              "name": "edata.eks.end_time",
+              "type": "path",
+              "expr": "$.edata.eks.end_time"
+            },
+            {
+              "name": "edata.eks.env_summary",
+              "type": "path",
+              "expr": "$.edata.eks.env_summary"
+            },
+            {
+              "name": "edata.eks.interact_events_count",
+              "type": "path",
+              "expr": "$.edata.eks.interact_events_count"
+            },
+            {
+              "name": "edata.eks.interact_events_per_min",
+              "type": "path",
+              "expr": "$.edata.eks.interact_events_per_min"
+            },
+            {
+              "name": "edata.eks.item_responses",
+              "type": "path",
+              "expr": "$.edata.eks.item_responses"
+            },
+            {
+              "name": "edata.eks.page_summary",
+              "type": "path",
+              "expr": "$.edata.eks.page_summary"
+            },
+            {
+              "name": "edata.eks.start_time",
+              "type": "path",
+              "expr": "$.edata.eks.start_time"
+            },
+            {
+              "name": "edata.eks.telemetry_version",
+              "type": "path",
+              "expr": "$.edata.eks.telemetry_version"
+            },
+            {
+              "name": "edata.eks.time_diff",
+              "type": "path",
+              "expr": "$.edata.eks.time_diff"
+            },
+            {
+              "name": "edata.eks.time_spent",
+              "type": "path",
+              "expr": "$.edata.eks.time_spent"
+            },
+            {
+              "name": "flags.summary_denorm_duplicate",
+              "type": "path",
+              "expr": "$.flags.summary_denorm_duplicate"
+            },
+            {
+              "name": "object.id",
+              "type": "path",
+              "expr": "$.object.id"
+            },
+            {
+              "name": "object.rollup.l1",
+              "type": "path",
+              "expr": "$.object.rollup.l1"
+            },
+            {
+              "name": "object.type",
+              "type": "path",
+              "expr": "$.object.type"
+            },
+            {
+              "name": "object.ver",
+              "type": "path",
+              "expr": "$.object.ver"
+            }
+          ]
+        }
+      },
+      "useEarliestOffset": true
+    },
+    "tuningConfig": {
+      "type": "kafka"
+    },
+    "dataSchema": {
+      "dataSource": "obsrv-summary-events2",
+      "timestampSpec": {
+        "column": "edata.eks.end_time",
+        "format": "auto"
+      },
+      "dimensionsSpec": {
+        "dimensions": [
+          "context.cdata",
+          "context.date_range.from",
+          "context.date_range.to",
+          "context.granularity",
+          "context.pdata.id",
+          "context.pdata.model",
+          "context.pdata.ver",
+          "context.rollup.l1",
+          "dimensions.channel",
+          "dimensions.did",
+          "dimensions.mode",
+          "dimensions.pdata.id",
+          "dimensions.pdata.pid",
+          "dimensions.pdata.ver",
+          "dimensions.sid",
+          "dimensions.type",
+          "edata.eks.env_summary",
+          "edata.eks.interact_events_count",
+          "edata.eks.interact_events_per_min",
+          "edata.eks.item_responses",
+          "edata.eks.page_summary",
+          "edata.eks.start_time",
+          "edata.eks.telemetry_version",
+          "edata.eks.time_diff",
+          "edata.eks.time_spent",
+          "flags.summary_denorm_duplicate",
+          "object.id",
+          "object.rollup.l1",
+          "object.rollup.l2",
+          "object.rollup.l3",
+          "object.rollup.l4",
+          "object.type",
+          "object.ver",
+          "eid",
+          "ver",
+          "mid",
+          "tags",
+          "uid",
+          "dataset"
+        ]
+      },
+      "granularitySpec": {
+        "queryGranularity": "hour",
+        "rollup": true,
+        "segmentGranularity": "day"
+      },
+      "metricsSpec": [
+        {
+          "name": "count",
+          "type": "count"
+        },
+        {
+          "name": "sum_syncts",
+          "type": "longSum",
+          "fieldName": "syncts"
+        },
+        {
+          "name": "sum_ets",
+          "type": "longSum",
+          "fieldName": "ets"
+        }
+      ]
+    }
+  }
+}
